@@ -21,49 +21,9 @@ body {
 }
 
 /* 终端样式 */
-.terminal-header {
-    background-color: #1a1a1a;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #333;
-}
-
-.terminal-controls {
-    display: flex;
-    gap: 8px;
-}
-
-.control-btn {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.control-btn.close {
-    background-color: #ff5f56;
-}
-
-.control-btn.minimize {
-    background-color: #ffbd2e;
-}
-
-.control-btn.maximize {
-    background-color: #27c93f;
-}
-
-.terminal-title {
-    font-size: 12px;
-    color: #888;
-}
-
 .terminal-body {
     background-color: #000;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
     padding: 20px;
     flex: 1;
     overflow-y: auto;
@@ -151,6 +111,27 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+/* 哈希值滚动区域 */
+.hash-scroll-area {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #111;
+    border-radius: 4px;
+    height: 120px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.2;
+    border-left: 3px solid #00ff00;
+}
+
+.hash-line {
+    color: #00ff88;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .animation-line {

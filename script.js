@@ -36,6 +36,9 @@ const elements = {
 
 // 初始化
 function init() {
+    // 添加哈希值滚动区域
+    addHashScrollArea();
+    
     // 启动挖矿模拟
     startMiningSimulation();
     
@@ -53,8 +56,56 @@ function init() {
     addLog('$ 输入 help 查看可用命令');
 }
 
+// 添加哈希值滚动区域
+function addHashScrollArea() {
+    const hashScrollArea = document.createElement('div');
+    hashScrollArea.className = 'hash-scroll-area';
+    hashScrollArea.id = 'hashScrollArea';
+    
+    // 找到挖矿动画区域后插入
+    const miningAnimation = document.getElementById('miningAnimation');
+    miningAnimation.parentNode.insertBefore(hashScrollArea, miningAnimation.nextSibling);
+}
+
+// 添加滚动哈希值
+function addScrollingHash() {
+    const hashScrollArea = document.getElementById('hashScrollArea');
+    if (hashScrollArea) {
+        // 生成随机哈希值
+        const randomHash = generateRandomHash();
+        
+        // 创建哈希行
+        const hashLine = document.createElement('div');
+        hashLine.className = 'hash-line';
+        hashLine.textContent = randomHash;
+        
+        // 添加到滚动区域
+        hashScrollArea.appendChild(hashLine);
+        
+        // 限制滚动区域高度，保持最多显示10行
+        const hashLines = hashScrollArea.querySelectorAll('.hash-line');
+        if (hashLines.length > 10) {
+            hashLines[0].remove();
+        }
+        
+        // 自动滚动到底部
+        hashScrollArea.scrollTop = hashScrollArea.scrollHeight;
+    }
+}
+
+// 生成随机哈希值
+function generateRandomHash() {
+    const chars = '0123456789abcdef';
+    let hash = '';
+    for (let i = 0; i < 64; i++) {
+        hash += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return hash;
+}
+
 // 开始挖矿模拟
 function startMiningSimulation() {
+    // 每1秒更新一次挖矿状态
     setInterval(() => {
         if (miningData.isMining) {
             // 增加哈希率（随机波动）
@@ -80,6 +131,13 @@ function startMiningSimulation() {
             updateMiningUI();
         }
     }, 1000);
+    
+    // 每100毫秒添加一个滚动哈希值
+    setInterval(() => {
+        if (miningData.isMining) {
+            addScrollingHash();
+        }
+    }, 100);
 }
 
 // 开始系统信息模拟
