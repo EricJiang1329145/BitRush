@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑客挖矿终端</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 终端头部 -->
+        <div class="terminal-header">
+            <div class="terminal-controls">
+                <div class="control-btn close"></div>
+                <div class="control-btn minimize"></div>
+                <div class="control-btn maximize"></div>
+            </div>
+            <div class="terminal-title">hackerminer@bitrush: ~/miner</div>
+        </div>
+        
+        <!-- 终端内容 -->
+        <div class="terminal-body">
+            <div class="terminal-output">
+                <p class="log">$ 正在启动挖矿终端...</p>
+                <p class="log">$ 初始化区块链连接...</p>
+                <p class="log">$ 加载挖矿算法...</p>
+                <p class="log success">✓ 连接成功！</p>
+                <p class="log success">✓ 算法加载完成！</p>
+                <p class="log">$ 开始挖矿...</p>
+                <div class="mining-status">
+                    <div class="hash-rate">
+                        <span class="label">哈希率:</span>
+                        <span class="value" id="hashRate">0</span> H/s
+                    </div>
+                    <div class="blocks-found">
+                        <span class="label">已找到区块:</span>
+                        <span class="value" id="blocksFound">0</span>
+                    </div>
+                    <div class="wallet-balance">
+                        <span class="label">钱包余额:</span>
+                        <span class="value" id="walletBalance">0.00</span> BTC
+                    </div>
+                </div>
+                <div class="mining-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+                <div class="mining-animation" id="miningAnimation">
+                    <div class="animation-line"></div>
+                    <div class="animation-line"></div>
+                    <div class="animation-line"></div>
+                    <div class="animation-line"></div>
+                    <div class="animation-line"></div>
+                </div>
+                <div class="terminal-input">
+                    <span class="prompt">$</span>
+                    <input type="text" id="commandInput" placeholder="输入命令...">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 侧边信息面板 -->
+        <div class="side-panel">
+            <h2>系统信息</h2>
+            <div class="system-info">
+                <div class="info-item">
+                    <span class="label">CPU使用率:</span>
+                    <span class="value" id="cpuUsage">0%</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">内存使用率:</span>
+                    <span class="value" id="memoryUsage">0%</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">GPU温度:</span>
+                    <span class="value" id="gpuTemp">0°C</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">网络延迟:</span>
+                    <span class="value" id="networkLatency">0ms</span>
+                </div>
+            </div>
+            
+            <h2>挖矿统计</h2>
+            <div class="mining-stats">
+                <div class="stat-item">
+                    <span class="label">今日收益:</span>
+                    <span class="value" id="todayEarnings">0.00</span> BTC
+                </div>
+                <div class="stat-item">
+                    <span class="label">总收益:</span>
+                    <span class="value" id="totalEarnings">0.00</span> BTC
+                </div>
+                <div class="stat-item">
+                    <span class="label">挖矿时间:</span>
+                    <span class="value" id="miningTime">0h 0m</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">全网难度:</span>
+                    <span class="value" id="networkDifficulty">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

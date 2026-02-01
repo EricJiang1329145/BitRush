@@ -1,0 +1,321 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0a0a;
+    color: #00ff00;
+    overflow: hidden;
+}
+
+/* 主容器 */
+.container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* 终端样式 */
+.terminal-header {
+    background-color: #1a1a1a;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.control-btn.close {
+    background-color: #ff5f56;
+}
+
+.control-btn.minimize {
+    background-color: #ffbd2e;
+}
+
+.control-btn.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    font-size: 12px;
+    color: #888;
+}
+
+.terminal-body {
+    background-color: #000;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.terminal-output {
+    line-height: 1.5;
+}
+
+.log {
+    margin-bottom: 8px;
+    color: #00ff00;
+}
+
+.log.success {
+    color: #00ff88;
+}
+
+.log.error {
+    color: #ff0000;
+}
+
+/* 挖矿状态 */
+.mining-status {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #111;
+    border-radius: 4px;
+    border-left: 3px solid #00ff00;
+}
+
+.hash-rate, .blocks-found, .wallet-balance {
+    font-size: 14px;
+}
+
+.label {
+    color: #888;
+    margin-right: 8px;
+}
+
+.value {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+/* 挖矿进度 */
+.mining-progress {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #00ff00;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+}
+
+/* 挖矿动画 */
+.mining-animation {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #111;
+    border-radius: 4px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.animation-line {
+    height: 20px;
+    background-color: #00ff00;
+    opacity: 0.3;
+    animation: pulse 1s infinite;
+    width: 100%;
+    transform-origin: left;
+}
+
+.animation-line:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.animation-line:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.animation-line:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.animation-line:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.animation-line:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: scaleX(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scaleX(0.8);
+    }
+}
+
+/* 终端输入 */
+.terminal-input {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 10px;
+}
+
+#commandInput {
+    background-color: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+}
+
+#commandInput::placeholder {
+    color: #444;
+}
+
+/* 侧边面板 */
+.side-panel {
+    width: 300px;
+    background-color: #111;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    overflow-y: auto;
+}
+
+.side-panel h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #00ff00;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+.system-info, .mining-stats {
+    margin-bottom: 30px;
+}
+
+.info-item, .stat-item {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .side-panel {
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .mining-status {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* 背景动画效果 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.05),
+        rgba(0, 255, 0, 0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 闪烁效果 */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.terminal-input::after {
+    content: '|';
+    color: #00ff00;
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
