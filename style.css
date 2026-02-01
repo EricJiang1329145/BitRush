@@ -266,6 +266,37 @@ body {
     }
 }
 
+/* 横屏模式适配 */
+@media (orientation: landscape) {
+    .container {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+    }
+    
+    .side-panel {
+        width: 250px; /* 横屏时减小侧边面板宽度 */
+        padding: 15px;
+    }
+    
+    .mining-status {
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .mining-animation {
+        height: 120px; /* 横屏时减小动画区域高度 */
+        padding: 10px;
+    }
+    
+    .animation-line {
+        height: 15px;
+    }
+}
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
     width: 8px;
